@@ -12,6 +12,8 @@ package com.javacoban.bankmanagement;
 //
 
 
+import java.util.ArrayList;
+
 public class Account {
     public static final float INTEREST = 0.035f;
 
@@ -33,11 +35,17 @@ public class Account {
         this.amount = 50000;
     }
     public void addMoney(double amountMoney) {
-        this.amount  += amountMoney;
+        this.amount=this.amount+amountMoney;
     }
 
     public void withdraw(double amountWithdraw) {
-        this.amount -= amountWithdraw;
+        if (this.amount-amountWithdraw < 50000){
+            System.out.println("You need add money,the balance in the account is at least 50.000");
+            return;
+        }
+        else {
+            this.amount -= amountWithdraw;
+        }
     }
 
     public void expires() {
@@ -45,11 +53,14 @@ public class Account {
     }
 
     public void transfer(double amount, Account account ) {
+        if (this.amount-amount<50000){
+            System.out.println("You need add money,the balance in the account is at least 50.000");
+            return;
+        }
         this.amount = this.amount - amount;
         double newAmount = account.getAmount() + amount;
         account.setAmount(newAmount);
     }
-
     public long getID() {
         return ID;
     }
@@ -57,7 +68,6 @@ public class Account {
     public void setID(long ID) {
         this.ID = ID;
     }
-
     public String getAccountName() {
         return accountName;
     }
