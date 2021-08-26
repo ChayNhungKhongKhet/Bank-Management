@@ -27,7 +27,6 @@ public class Main {
                 case 2:
                     System.out.print("Enter id of account want delete: ");
                     long idRemove= scanner.nextLong();
-                    accountManagement.searchByID(idRemove);
                     Account accountRemove= accountManagement.searchByID(idRemove);
                     accountManagement.removeAccount(accountRemove);
                     System.out.println("Remove successfully");
